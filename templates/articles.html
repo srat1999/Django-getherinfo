@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% static "layui.js" %}
+{% static "css/layui.css" %}
+{% block content %}
+
+    <div style="margin: 20px">
+    <table class="layui-table" lay-even lay-skin="nob">
+          <colgroup>
+            <col width="150">
+            <col width="200">
+            </colgroup>
+  <thead>
+    <tr>
+        <th>编号</th>
+      <th>时间</th>
+      <th>文章</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for article in articles %}
+      <tr>
+       <td>
+          {{ article.id }}
+      </td>
+      <td>
+          {{ article.date }}
+      </td>
+      <td>
+          <a href="{{ article.href }}">{{ article.title }}</a>
+      </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+    </table>
+
+    <div>
+      {% if articles.has_previous %}
+        <button type="button" class="layui-btn">
+            <a href="/api/article/?tp={{ type }}&page={{ articles.previous_page_number }}">上一页</a>
+        </button>
+        {% endif %}
+     {% if articles.has_next %}
+        <button type="button" class="layui-btn">
+             <a href="/api/article/?tp={{ type }}&page={{ articles.next_page_number }}">下一页</a>
+        </button>
+    {% endif %}
+    </div>
+
+    </div>
+{% endblock %}

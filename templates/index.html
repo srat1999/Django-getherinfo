@@ -1,6 +1,17 @@
 {% extends "base.html" %}
-
+{% load staticfiles %}
 {% block content %}
-    <h1>TOOL</h1>
+    <style>
+    p{
+        margin-top: 200px;
+        font-size: 50px;
+    }
+    body{
+        background-image: url("{% static 'images/bg.jpg' %}");
+        background-size: cover;
+    }
+
+    </style>
+
 {% endblock %}
 
